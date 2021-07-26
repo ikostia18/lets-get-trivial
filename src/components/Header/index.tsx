@@ -7,7 +7,6 @@ interface IHeaderProps {
   title: string;
 }
 
-// export default function Header(props: HeaderProps) {
 export const Header: React.FC<IHeaderProps> = (props: IHeaderProps) => {
   const classes = useStyles();
 

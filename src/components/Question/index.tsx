@@ -22,7 +22,6 @@ interface IQuestionProps {
   handleSelectedAnswer: (ans: string) => void;
 }
 
-// export default function Question(props: IQuestionProps) {
 export const Question: React.FC<IQuestionProps> = (props: IQuestionProps) => {
   const classes = useStyles();
   const { questions, qIndex, handleSelectedAnswer } = props;

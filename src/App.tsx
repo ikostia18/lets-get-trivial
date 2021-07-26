@@ -59,7 +59,7 @@ function App() {
     fetchTrivia();
   };
 
-  // Mix the results so that the correct answer does not appear in the same place for all questions
+  // Mix the answers so the correct answer does not appear in the same place for all questions
   const prepareAnswers = (correct: string, incorrect: string[]) => {
     const index = Math.floor(Math.random() * 4);
     incorrect.splice(index, 0, correct);
@@ -124,7 +124,7 @@ function App() {
     }
   };
 
-  // Using this Loading cause Material UI has issues with importing the 'LoadingButton'
+  // Using this static HTML Loading cause Material UI has issues with importing the 'LoadingButton'
   const isLoading = () => {
     if (!loaded && gameStatus === GameStatus.IN_PROGRESS) {
       return <p>Loading...</p>;
@@ -149,6 +149,7 @@ function App() {
         {START_GAME_BUTTON_TEXT}
       </Button>
 
+      {/* Material UI has issues with importing the 'LoadingButton' at this point */}
       {/* <LoadingButton
         className={classes.startButton}
         color="primary"

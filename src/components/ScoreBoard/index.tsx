@@ -6,7 +6,6 @@ interface IScoreBoardProps {
   score: number;
 }
 
-// export default function ScoreBoard(props: IScoreBoardProps) {
 export const ScoreBoard: React.FC<IScoreBoardProps> = (props: IScoreBoardProps) => {
   const classes = useStyles();
   

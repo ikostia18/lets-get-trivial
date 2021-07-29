@@ -17,7 +17,22 @@ import { Question, IQuestion } from './components/Question';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { Alert } from '@material-ui/lab';
 import { decodeHtml } from './utils/string';
+import React from 'react';
 // import LoadingButton from '@material-ui/lab/LoadingButton';
+
+// useContext test
+// const appContext = {
+//   dataV1: {
+//     a: 'app context V1 a',
+//     b: 'app context V1 b',
+//   },
+//   davaV2: {
+//     a: 'app context V2 a',
+//     b: 'app context V2 b',
+//   },
+// };
+
+// export const MyContext = React.createContext(appContext.dataV1);
 
 function App() {
   // *** Hooks *************************************************************************
@@ -136,21 +151,22 @@ function App() {
   const classes = useStyles();
 
   return (
-    <div className="App">
-      <Header title={GAME_TITLE}></Header>
+    // <MyContext.Provider value={appContext.davaV2}>
+      <div className="App">
+        <Header title={GAME_TITLE}></Header>
 
-      <Button
-        color="primary"
-        variant={
-          gameStatus === GameStatus.IN_PROGRESS ? 'outlined' : 'contained'
-        }
-        onClick={handleStartGame}
-      >
-        {START_GAME_BUTTON_TEXT}
-      </Button>
+        <Button
+          color="primary"
+          variant={
+            gameStatus === GameStatus.IN_PROGRESS ? 'outlined' : 'contained'
+          }
+          onClick={handleStartGame}
+        >
+          {START_GAME_BUTTON_TEXT}
+        </Button>
 
-      {/* Material UI has issues with importing the 'LoadingButton' at this point */}
-      {/* <LoadingButton
+        {/* Material UI has issues with importing the 'LoadingButton' at this point */}
+        {/* <LoadingButton
         className={classes.startButton}
         color="primary"
         variant={
@@ -162,38 +178,39 @@ function App() {
         {START_GAME_BUTTON_TEXT}
       </LoadingButton> */}
 
-      {isLoading()}
+        {isLoading()}
 
-      <>
-        {loaded && gameStatus === GameStatus.IN_PROGRESS && (
-          <>
-            {questions && (
-              <Question
-                questions={questions}
-                qIndex={qIndex}
-                answer={answer}
-                handleSelectedAnswer={handleSelectedAnswer}
-              ></Question>
-            )}
+        <>
+          {loaded && gameStatus === GameStatus.IN_PROGRESS && (
+            <>
+              {questions && (
+                <Question
+                  questions={questions}
+                  qIndex={qIndex}
+                  answer={answer}
+                  handleSelectedAnswer={handleSelectedAnswer}
+                ></Question>
+              )}
 
-            {updateAnswerStatus()}
+              {updateAnswerStatus()}
 
-            <Button
-              className={classes.nextButton}
-              disabled={answer === AnswerStatus.NOT_ANSWERED}
-              variant="contained"
-              onClick={handleNextButton}
-              endIcon={<NavigateNextIcon />}
-            >
-              Next
-            </Button>
-            <ScoreBoard score={score}></ScoreBoard>
-          </>
-        )}
-      </>
+              <Button
+                className={classes.nextButton}
+                disabled={answer === AnswerStatus.NOT_ANSWERED}
+                variant="contained"
+                onClick={handleNextButton}
+                endIcon={<NavigateNextIcon />}
+              >
+                Next
+              </Button>
+              <ScoreBoard score={score}></ScoreBoard>
+            </>
+          )}
+        </>
 
-      {updateScoreStatus()}
-    </div>
+        {updateScoreStatus()}
+      </div>
+    // </MyContext.Provider>
   );
 }
 

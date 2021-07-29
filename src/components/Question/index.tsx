@@ -5,6 +5,8 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+// import { useContext } from 'react';
+// import { MyContext } from '../../App';
 
 export interface IQuestion {
   category: string;
@@ -26,11 +28,14 @@ export const Question: React.FC<IQuestionProps> = (props: IQuestionProps) => {
   const classes = useStyles();
   const { questions, qIndex, handleSelectedAnswer } = props;
 
+  // const localContext = useContext(MyContext);
+
   return (
     <>
       <Card className={classes.root}>
         <CardContent>
           <Typography className={classes.title} variant="h1" component="h3">
+            {/* <div>Context Test - {localContext.a}</div> */}
             Question #{qIndex + 1} - {questions[qIndex].category}
           </Typography>
 
